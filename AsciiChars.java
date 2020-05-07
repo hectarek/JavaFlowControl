@@ -103,10 +103,12 @@ public class AsciiChars {
 
     public static void printNumbers() {
 
-    int[] asciiNums = new int[]{0,1,2,3,4,5,6,7,8,9};
+        int[] asciiNums = new int[]{0,1,2,3,4,5,6,7,8,9};
+        int[] asciiNumValues = new int[10];
 
-        for (int x : asciiNums){
+        for (int x=0; x<asciiNums.length; x++){
             System.out.print(x + " ");
+            asciiNumValues[x+48] = x+48;
         }
 
     }
@@ -114,9 +116,15 @@ public class AsciiChars {
     public static void printLowerCase(){
 
         char[] asciiLowerLetters = new char[]{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        int[] asciiLowerLetterValues = new int[26];
 
         for (char y : asciiLowerLetters){
             System.out.print(y + " ");
+            asciiLowerLetterValues[y] = y;
+        }
+
+        for (int i=0; i<asciiLowerLetters.length; i++){
+            asciiLowerLetterValues[i+97] = i+97;
         }
 
     }
@@ -124,11 +132,17 @@ public class AsciiChars {
     public static void printUpperCase(){
     
         char[] asciiUpperLetters = new char[]{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-    
+        int[] asciiUpperLetterValues = new int[26];
+
         for (char z : asciiUpperLetters){
             System.out.print(z + " ");
+            asciiUpperLetterValues[z] = z;
         }
     
+        for (int i=0; i<asciiUpperLetters.length; i++){
+            asciiUpperLetterValues[i+65] = i+65;
+        }
+
     }
     
 }
