@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class AsciiChars {
 
@@ -14,6 +15,8 @@ public class AsciiChars {
         printLowerCase();
         printUpperCase();
 
+        System.out.println(" ");
+
         //Ask questions to get use information.
 
         System.out.println("What is your name?");
@@ -22,11 +25,12 @@ public class AsciiChars {
         System.out.println("Hello, " + name);
 
         System.out.println("Would you like to continue with the interactive portion? y/n");
-        String answer = input.nextLine();
+        String answer = input.nextLine().trim();
 
-        if (answer == "y" || answer == "Y" || answer == "Yes" || answer == "yes"){
+        while (answer != null){
+
+            if (answer.equals("y") || answer.equals("Y") || answer.equals("Yes") || answer.equals("yes")){
             //Interactive portion 
-
             System.out.println("Do you have a red car? (yes/no)");
             String redCar = input.nextLine();
 
@@ -41,10 +45,11 @@ public class AsciiChars {
 
             System.out.println("Do you have a favorite quarterback? (yes/no)");
             String answerQB = input.nextLine();
+            answerQB = input.nextLine();
 
             int numQB = 0;
 
-            if (answerQB == "yes" || answerQB == "Yes") {
+            if (answerQB.equals("yes") || answerQB.equals("Yes")) {
                 System.out.println("What is their jersey number?");
                 numQB = input.nextInt();
             } 
@@ -54,21 +59,33 @@ public class AsciiChars {
 
             System.out.println("What is the first name of your favorite actor?");
             String actorName = input.nextLine();
+            actorName = input.nextLine();
 
             System.out.println("Enter a random number between 1 and 50.");
             int randomNum = input.nextInt();
-        
+
+            try {
+            System.out.println("Calculating your lottery numbers...");
+            TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                System.err.format("IOException: %s%n", e);
+            }
+
+            int magicBall = 0;
 
             if (numQB != 0){
-                int magicBall = numQB;
+                magicBall = numQB;
             } else {
-                int magicBall = lucky * random1;
+                // THIS NUMBER GETS TOO HIGH
+                magicBall = lucky * random1;
                 if(magicBall >75) {
                     magicBall -= 75;
                 }
             }
             
             //Random Lottery Number 1 ; * Use the two digit model year of their car and add their lucky number to it.
+            
+            // THIS NUMBER GETS TOO HIGH
             int lotNum1 = carNum * lucky;
                 if(lotNum1 > 75) {
                     lotNum1 -= 75;
@@ -86,17 +103,20 @@ public class AsciiChars {
                     lotNum3 -= 75;
                 }
             //Random Lottery Number 4 ;
-            
+
+
+
+            //Final Output
+            System.out.println(" ");
+            System.out.println("Lottery Numbers: " + lotNum1 + ", " + lotNum2 + ", " + lotNum3 + ", " + "Magic Ball: " + magicBall);
+            System.out.println(" ");
+            break;
 
         } else {
             System.out.println("Please return to complete the survey another time. Thank you!");
+            break;
         }
-
-        //Calculate Lottery Numbers from responses
-
-       
-
-
+    }
 
         input.close();
     }
@@ -108,7 +128,7 @@ public class AsciiChars {
 
         for (int x=0; x<asciiNums.length; x++){
             System.out.print(x + " ");
-            asciiNumValues[x+48] = x+48;
+            asciiNumValues[x] = x+48;
         }
 
     }
@@ -120,11 +140,10 @@ public class AsciiChars {
 
         for (char y : asciiLowerLetters){
             System.out.print(y + " ");
-            asciiLowerLetterValues[y] = y;
         }
 
         for (int i=0; i<asciiLowerLetters.length; i++){
-            asciiLowerLetterValues[i+97] = i+97;
+            asciiLowerLetterValues[i] = i+97;
         }
 
     }
@@ -136,11 +155,10 @@ public class AsciiChars {
 
         for (char z : asciiUpperLetters){
             System.out.print(z + " ");
-            asciiUpperLetterValues[z] = z;
         }
     
         for (int i=0; i<asciiUpperLetters.length; i++){
-            asciiUpperLetterValues[i+65] = i+65;
+            asciiUpperLetterValues[i] = i+65;
         }
 
     }
