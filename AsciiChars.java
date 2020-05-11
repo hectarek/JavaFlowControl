@@ -2,6 +2,8 @@ package FlowControlProject;
 
 import java.util.concurrent.TimeUnit;
 import java.util.*;
+import java.util.regex.Pattern;  
+
 
 public class AsciiChars {
 
@@ -11,6 +13,7 @@ public class AsciiChars {
 
         int random1 = (int) (Math.random() * 75);
         int random2 = (int) (Math.random() * 65);
+        Pattern pattern = Pattern.compile("[A-Za-z]*");  
 
         printNumbers();
         printLowerCase();
@@ -31,39 +34,76 @@ public class AsciiChars {
         while (answer != null) {
 
             if (answer.equals("y") || answer.equals("Y") || answer.equals("Yes") || answer.equals("yes")) {
+                
+                //declarations
+                String redCar;
+                String petName;
+                int petAge;
+                int lucky;
+                String answerQB;
+                int numQB = 0;
+                int carNum;
+                String actorName;
+
                 // Interactive portion
                 System.out.println("Do you have a red car? (yes/no)");
-                String redCar = input.nextLine();
+                while (!input.hasNext(pattern)) {
+                    redCar = input.nextLine();
+                    System.out.printf("\"%s\" is not a valid response, please say either yes or no.\n", redCar);
+                }
 
-                System.out.println("What is the name of a favorite pet?");
-                String petName = input.nextLine();
+                System.out.println ("What is the name of a favorite pet?");
+                while (!input.hasNext(pattern)) {
+                    petName = input.nextLine();
+                    petName = input.nextLine();
+                    System.out.printf("\"%s\" is not a valid response, please enter a name.\n", petName);
+                }
 
                 System.out.println("What is the age of a favorite pet?");
-                int petAge = input.nextInt();
+                while (!input.hasNextInt()) {
+                    petAge = input.nextInt();
+                    System.out.printf("\"%s\" is not a valid response, please enter a number.\n", petAge);
+                }
 
                 System.out.println("What is your lucky number?");
-                int lucky = input.nextInt();
+                while (!input.hasNextInt()) {
+                    lucky = input.nextInt();
+                    System.out.printf("\"%s\" is not a valid response, please enter a number.\n", lucky);
+                }
 
                 System.out.println("Do you have a favorite quarterback? (yes/no)");
-                String answerQB = input.nextLine();
-                answerQB = input.nextLine();
-
-                int numQB = 0;
+                while (!input.hasNext(pattern)) {
+                    answerQB = input.nextLine();
+                    answerQB = input.nextLine();
+                    System.out.printf("\"%s\" is not a valid response, please enter yes or no.\n", answerQB);
+                }
 
                 if (answerQB.equals("yes") || answerQB.equals("Yes")) {
                     System.out.println("What is their jersey number?");
-                    numQB = input.nextInt();
+                    while (!input.hasNextInt()) {
+                        numQB = input.nextInt();
+                        System.out.printf("\"%s\" is not a valid response, please enter a number.\n", numQB);
+                    }
                 }
 
                 System.out.println("What is the two-digit model year of your car? (ex. 2013 = 13)");
-                int carNum = input.nextInt();
+                while (!input.hasNextInt()) {
+                    carNum = input.nextInt();
+                    System.out.printf("\"%s\" is not a valid response, please enter a number.\n", carNum);
+                }
 
                 System.out.println("What is the first name of your favorite actor?");
-                String actorName = input.nextLine();
-                actorName = input.nextLine();
+                while (!input.hasNext(pattern)) {
+                    actorName = input.nextLine();
+                    actorName = input.nextLine();
+                    System.out.printf("\"%s\" is not a valid response, please enter a name.\n", actorName);
+                }
 
                 System.out.println("Enter a random number between 1 and 50.");
+                while (!input.hasNext(pattern)) {
                 int randomNum = input.nextInt();
+                System.out.printf("\"%s\" is not a valid response, please enter a number.\n", randomNum);
+                }
 
                 try {
                     System.out.println("Calculating your lottery numbers...");
@@ -110,7 +150,7 @@ public class AsciiChars {
                     lotNum4 -= 65;
                 }
 
-                // Random Lottery Number 4 ; Use the first letter of actor first letter.
+                // Random Lottery Number 5 ; Use the first letter of actor first letter.
                 int lotNum5 = petName.charAt(2);
                 while (lotNum5 > 65) {
                     lotNum5 -= 65;
@@ -121,7 +161,15 @@ public class AsciiChars {
                 System.out.println("Lottery Numbers: " + lotNum1 + ", " + lotNum2 + ", " + lotNum3 + ", " + lotNum4 + ", " + lotNum5 + ", "
                         + "Magic Ball: " + magicBall);
                 System.out.println(" ");
-                break;
+                
+                System.out.println("Do you want to play again??");
+                String cont = input.nextLine();
+                cont = input.nextLine();
+
+                if(cont.equals("No") || cont.equals("no")){
+                    System.out.println("Thank you for playing!");
+                    break;
+                }
 
             } else {
                 System.out.println("Please return to complete the survey another time. Thank you!");
