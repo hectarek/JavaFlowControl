@@ -36,14 +36,15 @@ public class AsciiChars {
             if (answer.equals("y") || answer.equals("Y") || answer.equals("Yes") || answer.equals("yes")) {
                 
                 //declarations
-                String redCar;
-                String petName;
+                String redCar = "";
+                String petName = "";
                 int petAge;
-                int lucky;
-                String answerQB;
+                int lucky = 0;
+                String answerQB = "";
                 int numQB = 0;
-                int carNum;
-                String actorName;
+                int carNum = 0;
+                String actorName = "";
+                int randomNum = 0;
 
                 // Interactive portion
                 System.out.println("Do you have a red car? (yes/no)");
@@ -53,13 +54,15 @@ public class AsciiChars {
                 }
 
                 System.out.println ("What is the name of a favorite pet?");
+                petName = input.nextLine();
                 while (!input.hasNext(pattern)) {
-                    petName = input.nextLine();
                     petName = input.nextLine();
                     System.out.printf("\"%s\" is not a valid response, please enter a name.\n", petName);
                 }
 
                 System.out.println("What is the age of a favorite pet?");
+                petAge = input.nextInt();
+                petAge = input.nextInt();
                 while (!input.hasNextInt()) {
                     petAge = input.nextInt();
                     System.out.printf("\"%s\" is not a valid response, please enter a number.\n", petAge);
@@ -101,7 +104,7 @@ public class AsciiChars {
 
                 System.out.println("Enter a random number between 1 and 50.");
                 while (!input.hasNext(pattern)) {
-                int randomNum = input.nextInt();
+                randomNum = input.nextInt();
                 System.out.printf("\"%s\" is not a valid response, please enter a number.\n", randomNum);
                 }
 
